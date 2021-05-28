@@ -1,0 +1,314 @@
+{% load static %}
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <link rel="stylesheet" href="{% static 'custom/css/starter.css' %}">
+  
+  <link rel="shortcut icon" href="{% static 'dist/icons/favicon.ico' %}" type="image/x-icon">
+  <!-- 加上image/x-icon的必要性 -->
+  <link rel="bookmark" href="{% static 'dist/icons/favicon.ico' %}">
+  <link rel="apple-touch-icon" href="{% static 'dist/icons/apple-touch-icon.png' %}">
+  <link rel="apple-touch-icon" href="{% static 'dist/icons/apple-icon-180.png' %}">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-2048-2732.jpg' %}" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-2732-2048.jpg' %}" %}" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-1668-2388.jpg' %}" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-2388-1668.jpg' %}" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-1536-2048.jpg' %}" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-2048-1536.jpg' %}" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-1668-2224.jpg' %}" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-2224-1668.jpg' %}" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-1620-2160.jpg' %}" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-2160-1620.jpg' %}" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-1284-2778.jpg' %}" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-2778-1284.jpg' %}" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-1170-2532.jpg' %}" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-2532-1170.jpg' %}" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-1125-2436.jpg' %}" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-2436-1125.jpg' %}" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-1242-2688.jpg' %}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-2688-1242.jpg' %}" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-828-1792.jpg' %}" 
+  media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-1792-828.jpg' %}" 
+  media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-1242-2208.jpg' %}" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-2208-1242.jpg' %}" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)">
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-750-1334.jpg' %}" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">    
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-1334-750.jpg' %}" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">   
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-640-1136.jpg' %}" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">    
+  <link rel="apple-touch-startup-image" href="{% static 'dist/icons/apple-splash-1136-640.jpg' %}" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)">
+  <title>MOOD</title>
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Contact</a>
+      </li>
+    </ul>
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Navbar Search -->
+      <li class="nav-item">
+        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+          <i class="fas fa-search"></i>
+        </a>
+        <div class="navbar-search-block">
+          <form class="form-inline">
+            <div class="input-group input-group-sm">
+              <input class="form-control form-control-navbar" type="search" placeholder="搜索..." aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-navbar" type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </li>
+      <!-- Messages Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-comments"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="{% static 'dist/img/user1-128x128.jpg' %}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Brad Diesel
+                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">Call me whenever you can...</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="{% static 'dist/img/user8-128x128.jpg' %}" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  John Pierce
+                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">I got your message bro</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="{% static 'dist/img/user3-128x128.jpg' %}" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Nora Silvester
+                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">The subject goes here</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+        </div>
+      </li>
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 4 new messages
+            <span class="float-right text-muted text-sm">3 mins</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 friend requests
+            <span class="float-right text-muted text-sm">12 hours</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+          <i class="fas fa-th-large"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-light-primary elevation-1">
+    <!-- Brand Logo -->
+    <a href="#" class="brand-link">
+      <img src="{% static 'dist/img/manifest-icon-192.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-2">
+      <span class="brand-text font-weight-light">MOOD</span>
+    </a>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">{{ request.user.username }}</a>
+        </div>
+      </div>
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link  elevation-1">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                固定功能
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/manualLabel" class="nav-link ">
+                  <svg t="1621511823550" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2116" width="26" height="17"><path d="M426 817.7H144.4c-22.7 0-41.2-18.5-41.2-41.1V108.5c0-22.7 18.5-41.2 41.2-41.2h308.1v81.5c0 48.3 39.6 87.9 87.9 87.9h92.8c0.2 1.3 0.7 2.5 0.7 3.9v272.9c7.6 6.4 15.2 12.6 22.8 20.3 1 1.1 2.1 2.2 3.1 3.3 4.7-2.4 9.5-4.6 14.4-6.3 9.1-3.2 18.1-4.9 27-5.8V240.6c0-2-0.4-3.9-0.5-5.8-1.3-23.3-10.2-45.5-26-62.9L549.3 33.5C530 12.2 502.3 0 473.6 0H144.5C84.6 0 36 48.7 36 108.5v668.1c0 59.8 48.7 108.5 108.5 108.5h281.7c-6.4-21.6-6.8-44.8-0.2-67.4z" p-id="2117"></path><path d="M189.3 391.6h243.1c20.7 0 37.6-16.9 37.6-37.6 0-20.7-16.9-37.6-37.6-37.6H189.3c-20.7 0-37.6 16.9-37.6 37.6 0 20.7 16.9 37.6 37.6 37.6zM443.6 514.9c12.1-18.8 30.3-33.2 51.6-41.2H189.3c-20.7 0-37.6 16.9-37.6 37.6s16.9 37.6 37.6 37.6h237.8c0.4-1.3 0.4-2.6 0.8-3.9 3.6-10.8 8.9-20.9 15.7-30.1zM483.9 679.6c-13.6-9.2-29.4-20-42.3-39.2-2-3-3.2-6.3-4.9-9.4H189.3c-20.7 0-37.6 16.9-37.6 37.6 0 20.7 16.9 37.6 37.6 37.6h321.9c-9.2-14.1-17.1-19.8-27.3-26.6z" p-id="2118"></path><path d="M928.4 620.4c-7.2-19.8-26.9-33.1-49.1-33.1-6.3 0-12.4 1.1-18.1 3.2-3.8 1.4-7.9 3.5-11.7 6.1C839.1 579 820 568 799.1 568c-6.6 0-13.4 1.2-20.2 3.6-10.6 3.8-19.8 10.6-26.7 19.6-10.8-10.3-25.1-16-40.2-16-6.6 0-13.4 1.2-20.2 3.6-14.9 5.4-28 16-35.7 28.4-1.1 1.4-2.1 2.8-3 4.2-12.4-18.3-23.1-31.9-32.7-41.5-23.5-23.6-58.2-51.6-90.1-51.6-5.7 0-11.2 1-16.6 2.9-11.9 4.3-21.9 12.6-28 22.9-4.1 5.1-7.2 10.8-9.2 17-5.6 16.9-2.9 35.3 7.4 50.6 7.5 11.1 17.4 17.8 28.2 25.1 14.4 9.5 30.6 20.3 47.8 50.4 13.4 23.3 31 63.5 51.1 116.6l-39.2-19.4c-9.1-4.2-18.8-6.4-28.7-6.4-23.3 0-45.3 12.4-57.3 32-3 3.9-5.5 8.1-7.7 12.6-15.7 34-1.3 74.5 34 91 10.3 5.4 59.3 31.1 124.6 61.6l12 5.6c47.1 22.2 91.7 43.1 144.4 43.1 25.1 0 50.1-4.7 76.4-14.3 41-14.9 69.8-35.6 87.7-63.1 21.7-29.4 27-62.7 30.4-91.5 6.3-55.5-58.5-232.8-59.2-234.6zM520 831.3c2.5-5.7 6.4-10.4 10-13.1 3.2-0.9 6.4-1.4 9.6-1.4 5.2 0 10.2 1.2 14.5 3.4l83 40.9c2.3 1.1 4.8 1.7 7.4 1.7 4.1 0 8-1.5 10.8-4 2-1.6 3.5-3.7 2.2-3.7 0 0-0.2 0.1-0.3 0.1l4.5-2.8c5-4.3 6.9-11.3 3.4-21.2-25.8-73-49.7-130.2-67.3-161.1-20.2-35.5-41-49.5-56.3-59.8-8-5.4-14.2-9.6-18.1-15.4-4.4-6.7-5.6-14.3-3.4-20.9 2.1-6.2 6.7-10.9 12.9-13.2l6.4-1c15.2 5.6 34.5 19.6 54.4 39.4 26 26 58.7 85.6 65.2 97.6 2.8 5.6 8.4 9.1 14.7 9.1l5.4-1.4 1-0.5 5-1 1-0.5c7.8-3.6 11.5-12.4 8.6-20.5l-10.1-27.9c-7.1-19.5 8.3-33.1 20.3-37.5 2.4-0.9 4.8-1.4 9.3-1.4 0.8 0 1.5 0.1 2.4 0.1 7.5 2.5 13.6 8.3 16.3 15.6l14.4 39.5c2.3 6.5 8.6 10.9 15.6 10.9 2 0 3.9-0.4 8-1.8 8.2-3.1 12.6-12.4 9.6-20.9l-6.3-17.5c-2.2-6.3-2-13 0.8-18.8 2.8-5.9 7.7-10.4 13.8-12.6 2.7-1 5.5-1.6 8.2-1.6 10.3 0 19.5 6.5 23 16.2l16.4 45.2c0.8 2.4 2.2 4.6 4.2 6.5 3.1 3.2 7.5 5 11.9 5l5.6-1c4.1-1.5 7.4-4.5 9.3-8.4 1.9-4 2.2-8.7 0.7-12.9l-9-24.7c1.9-1.6 4.6-3.5 8.8-6.1 1.9-0.7 4.1-1.1 6.4-1.1 7.7 0 14.9 4.6 17.1 10.8 19.8 54.3 59.5 177.9 55.4 213.1-5.7 50.4-15.9 91-89.3 118-22 8-42.5 11.9-62.8 11.9-43.2 0-81.3-18-125.6-38.9l-11.6-5.4c-70.5-33-120.6-60.1-121.3-60.5-8.1-3.8-14.2-10.4-17.2-18.9-3.2-8.2-2.8-17.4 1.1-25.6z" p-id="2119"></path></svg>
+                  <p>人工标记</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <svg t="1621512376194" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3497" width="27" height="17"><path d="M699.956224 862.0032l276.992-281.7792 46.1056 46.9504-276.9408 281.7024v0.0768l-46.1056 46.9504-184.4736-187.7248 46.1312-46.9504 138.2912 140.7232v0.0512zM231.015424 614.3488h165.0176c18.2272 0 32.9984 15.2832 32.9984 34.1248 0 18.8672-14.7712 34.1504-33.024 34.1504H231.041024c-11.776 0-22.6816-6.5024-28.5696-17.0752-5.888-10.5472-5.888-23.552 0-34.1248 5.888-10.5472 16.7936-17.0496 28.5696-17.0496v-0.0256z m0-204.8h396.032c18.2272 0 33.024 15.3088 33.024 34.1504 0 18.8672-14.7968 34.1504-33.024 34.1504H231.015424c-18.2272 0-33.024-15.2832-33.024-34.1504 0-18.8416 14.7968-34.1248 33.024-34.1248z m0-204.7488h396.032c11.776 0 22.6816 6.5024 28.5696 17.0752 5.888 10.5472 5.888 23.552 0 34.0992-5.888 10.5728-16.7936 17.0752-28.5696 17.0752H231.015424c-18.2272 0-32.9984-15.2832-32.9984-34.1248S212.788224 204.8 231.041024 204.8z m495.0528-204.8c72.8832 0 131.9936 61.1328 131.9936 136.5248v409.5744H792.065024V136.5504c0-37.6832-29.5424-68.2496-65.9712-68.2496H132.020224c-36.4544 0-65.9968 30.5664-65.9968 68.2496v750.8992c0 37.7088 29.5424 68.2496 65.9968 68.2496h429.056v68.2752H131.943424a129.8432 129.8432 0 0 1-93.3376-40.0128A138.9312 138.9312 0 0 1 0.001024 887.3984V136.5504C0.001024 100.352 13.901824 65.6128 38.657024 39.9872A129.8432 129.8432 0 0 1 132.020224 0h594.048z" fill="#1B7AFF" p-id="3498"></path></svg>
+              <p>
+                自然语言处理
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-cloud nav-icon"></i>
+                  <p>词云</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-wave-square nav-icon"></i>
+                  <p>词频</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-cloud-moon nav-icon"></i>
+                  <p>情感分析</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link elevation-1">
+                  <svg t="1621513090236" class="icon" viewBox="0 0 1034 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4483" width="27" height="17"><path d="M991.976864 367.884226m-42.604921 0a42.60492 42.60492 0 1 0 85.209841 0 42.60492 42.60492 0 1 0-85.209841 0Z" fill="#8BC17D" p-id="4484"></path><path d="M142.28656 49.088278m-22.599132 0a22.599132 22.599132 0 1 0 45.198263 0 22.599132 22.599132 0 1 0-45.198263 0Z" fill="#8BC17D" p-id="4485"></path><path d="M307.519555 725.950796m-298.049204 0a298.049204 298.049204 0 1 0 596.098408 0 298.049204 298.049204 0 1 0-596.098408 0Z" fill="#8BC17D" p-id="4486"></path><path d="M497.574548 995.287988a28.341534 28.341534 0 0 1-12.781476-3.149059L15.397992 753.736614A28.341534 28.341534 0 0 1 0.023173 728.544139a27.785818 27.785818 0 0 1 15.374819-25.007236l177.829233-90.396527-177.829233-90.396527a28.156295 28.156295 0 0 1 0-50.19971l177.829233-90.396527-177.829233-90.211288a28.341534 28.341534 0 0 1 0-50.384949L484.793072 3.149059a28.341534 28.341534 0 0 1 25.562952 0l469.39508 238.402316a28.341534 28.341534 0 0 1 0 50.384949l-177.829233 90.211288 177.829233 90.396527a28.156295 28.156295 0 0 1 0 50.19971l-177.829233 90.396527 177.829233 90.396527a27.785818 27.785818 0 0 1 15.374819 25.007236 28.341534 28.341534 0 0 1-15.374819 25.192475L510.356024 992.138929a28.341534 28.341534 0 0 1-12.781476 3.149059z m-407.340087-266.743849L497.574548 935.455861l407.340087-206.911722-165.232996-83.913169-229.325615 116.700434a28.341534 28.341534 0 0 1-25.562952 0l-229.325615-116.700434z m178.199711-140.410999l229.140376 116.515196L725.047775 589.059334a19.079595 19.079595 0 0 1 3.890015-2.037626l175.976845-89.285094-165.232996-83.91317-229.325615 116.515196a28.341534 28.341534 0 0 1-25.562952 0l-229.325615-116.515196-165.232996 83.91317 177.643995 90.211288zM90.234461 266.743849l407.340087 206.911723 227.287989-115.589002 4.075253-2.037626 175.976845-89.285095L497.574548 59.832127z" fill="#535453" p-id="4487"></path></svg>
+                  <p>主题分析</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+  <!-- Content Wrapper. Contains page content -->
+ {% block content %}
+ <div class="d-block">
+   {% include content_template %}
+ </div>
+ {% endblock content %}
+</div>
+<!-- ./wrapper -->
+<!-- REQUIRED SCRIPTS -->
+<!-- jQuery -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'dist/js/adminlte.min.js' %}"></script>
+{% block scripts %}
+{% endblock scripts %}
+<script>
+
+  var url = window.location;
+  // for sidebar menu entirely but not cover treeview
+  $('ul.nav-sidebar > .nav-item > a').filter(function() {
+      return this.href == url;
+  }).addClass('active');
+  
+  // for treeview
+  $('ul.nav-treeview a').filter(function() {
+      return this.href == url;
+  }).parentsUntil(".nav-sidebar > .nav-treeview").addClass('menu-open').prev('a').addClass('active');
+</script>
+</body>
+</html>

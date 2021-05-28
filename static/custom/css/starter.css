@@ -1,0 +1,13 @@
+/* #manual-label-select-file::after {
+    display: none;
+} */
+
+@media (min-width: 576px) {
+    .col-sm-1 {
+        -webkit-flex: 0 0 8.333333%;
+        -ms-flex: 0 0 8.333333%;
+        flex: 0 0 8.333333%;
+        max-width: 8.333333%;
+    }
+
+}

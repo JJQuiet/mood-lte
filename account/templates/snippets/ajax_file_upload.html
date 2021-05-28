@@ -1,0 +1,32 @@
+
+
+<script>
+
+    $('#docfile').change(function(){
+        var formData = new FormData();
+        formData.append('docfile', $('#docfile')[0].files[0], $('#docfile')[0].files[0].name);
+        formData.append('csrfmiddlewaretoken', getCookie('csrftoken'));
+        // console.log(formData.entries())
+        // data = {
+        //     'docfile': $('#docfile')[0].files[0],
+        //     // 'docfile': 'hhhhhhhhhhhhhhh',
+        //     'csrfmiddlewaretoken': getCookie('csrftoken'),
+        // }
+        // console.log('aaaaaaaaaaaaa')
+        // formData.append('csrfmiddlewaretoken', getCookie('csrftoken'))
+        // console.log('bbbbbbbbbbbbbbbbbb')
+        // $.post('/fileUpload', data, function(data){
+        //     alert('成功')
+        // })
+        $.ajax({
+            type: 'POST',
+            url: '/fileUpload',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success:function(data){
+                console.log('ssssssssssssssssssssss')
+            }
+        })
+    })
+</script>

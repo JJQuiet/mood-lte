@@ -1,0 +1,98 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header border-bottom mb-2">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-2">
+            <h1 class="m-0">人工标记</h1>
+          </div><!-- /.col -->
+          <div id="card-select-edit" class="card col-4 col-sm-1 m-0">
+            <div class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle" id="manual-label-select-file" href="#" data-bs-toggle="dropdown"><span>编辑文件</span></a>
+                 <ul class="dropdown-menu m-0">
+                    {% for document in documents %}
+                    <li><button class="dropdown-item" value="{{ document.id }}">{{ document.file.name }}</button></li>
+                    {% endfor %}
+                 </ul>
+             </div>
+          </div>
+          <div id="card-upload" class="card col-3 col-sm-1 m-0 mx-1 d-flex justify-content-center align-items-center">
+            <form action="/manualLabel" method="POST" enctype="multipart/form-data" class="">{% csrf_token %}
+              <label for="docfile" class="m-0 font-weight-normal">上传文件</label>
+              <input type="file" id="docfile" class="d-none" name="docfile" accept=".csv" required >
+              <input type="submit" class="d-none" id="file_upload_submit">
+            </form>
+          </div>
+          <div class="card col-4 col-sm-1 m-0" id="card-download">
+            <div class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle" id="manual-label-select-file" href="#" data-bs-toggle="dropdown"><span>下载文件</span></a>
+                 <ul class="dropdown-menu m-0">
+                    {% for document in documents %}
+                    <li><a href="/fileDownload/{{ document.id }}" class="dropdown-item">{{ document.file.name }}</a></li>
+                    {% endfor %}
+                 </ul>
+             </div>
+             <form action="/fileDownload" >
+            
+            </form>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">固定功能</a></li>
+              <li class="breadcrumb-item active">人工标记</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          
+          <!-- /.col-md-6 -->
+          <div class="col-lg-8 ml-5">
+            <div id="card-main" class="card card-primary" style="min-height: 160px;">
+              <div class="card-header">
+                  <div class="row">
+                    <h5 class="m-0 col-4">待处理文件</h5>
+                    <div class="progress col-8 p-0">
+                      <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0"></div>
+                    </div>
+                  </div>
+                  <input type="hidden" id="selectedFile" value="">
+              </div>
+              <div class="card-body" >
+                <!-- <h6 class="card-title">Special title treatment</h6> -->
+                <input type="hidden" id="cur_edit_id" value="">
+                <p class="card-text" id="review_text"></p>
+                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+              </div>
+            </div>
+            <div class="card card-primary d-none" id="card-alert">
+                <div class="card-body row justify-content-center">
+                  <div class="alert alert-danger mb-1 mt-1 d-none" id="edit-alert">该文件已被三人处理</div>
+                  <div class="alert alert-danger mb-1 d-none" id="process-alert"></div>
+                </div>
+            </div>
+            <div class="card card-primary" id="card-process">
+                <div class="card-body row justify-content-center">  
+                    <button id="previous" class="btn btn-info">上一个</button>
+                    <button id="negative" class="btn btn-dark mx-2">消极的</button>
+                    <button id="flat" class="btn btn-secondary">中性的</button>
+                    <button id="positive" class="btn btn-success mx-2">积极的</button>
+                    <button id="next" class="btn btn-info">下一个</button>
+                </div>
+            </div>
+          <!-- /.col-md-6 -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% block scripts %}
+
+{% endblock scripts %}

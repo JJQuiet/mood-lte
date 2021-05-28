@@ -1,0 +1,140 @@
+{% extends 'account/starter.html' %}
+
+
+{% block scripts %}
+
+<script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    document.querySelectorAll('.dropdown').forEach(function(everyitem){
+        everyitem.addEventListener('mouseover', function(e){
+            let el_link = this.querySelector('a[data-bs-toggle]');
+            if(el_link != null){
+                let nextEl = el_link.nextElementSibling;
+                el_link.classList.add('show');
+                nextEl.classList.add('show');
+            }
+        });
+        everyitem.addEventListener('mouseleave', function(e){
+            let el_link = this.querySelector('a[data-bs-toggle]');
+            if(el_link != null){
+                let nextEl = el_link.nextElementSibling;
+                el_link.classList.remove('show');
+                nextEl.classList.remove('show');
+            }
+        })
+    });
+    $('.card:nth-child(2) .dropdown-item').each(function(index){
+        $(this).click(function(){
+            $('#card-main .card-header h5').html($(this).html())
+            var selectedFile = $(this).val()
+            data = {
+                'csrfmiddlewaretoken': getCookie('csrftoken'),
+                'selectedFile': $(this).val(),
+            }
+            $.post('/edit', data, function(data){
+                if (data['edit_alert_display']){
+                    $('#card-alert').removeClass('d-none').addClass('d-block')
+                    $('#edit-alert').removeClass('d-none').addClass('d-block')
+                }
+                else{
+                    $('#card-process').removeClass('d-none').addClass('d-block')
+                    $('#card-alert').removeClass('d-block').addClass('d-none')
+                    $('#review_text').html(data.cur_edit_review)
+                    $('#selectedFile').val(selectedFile)
+                    $('.progress-bar').css({'width': data.already/data.total*100+"%", 'aria-valuenow': data.already, 'aria-valuemax': data.total})
+                    $('.progress-bar').html(data.already+' / '+data.total)
+                    $('#cur_edit_id').val(data.cur_edit_id)
+                }
+            })
+        })
+    })
+    $('#docfile').change(function(){
+        // $('label').text($(this).val())
+        $('#file_upload_submit').click()
+    })
+    
+    $("#next").click(function(){
+        data = {
+            'csrfmiddlewaretoken': getCookie('csrftoken'),
+            'cur_edit_row': $('#cur_edit_id').val(),
+            'selectedFile': $('#selectedFile').val(),
+        }
+        $.post('/next', data, function(data){
+            if (data['process_alert_display']) {
+                $('#card-alert').removeClass('d-none').addClass('d-block')
+                $('#card-process').removeClass('d-block').addClass('d-none')
+                $('#process-alert').removeClass('d-none').addClass('d-block')
+                $('#process-alert').html('已经到达最后一条！')
+            }
+            else {
+                $('#review_text').html(data.cur_edit_review)
+                $('#cur_edit_id').val(parseInt($('#cur_edit_id').val())+1)
+                $('.progress-bar').css({'width': data.already/data.total*100+"%", 'aria-valuenow': data.already})
+                $('.progress-bar').html(data.already+' / '+data.total)
+            }
+        })
+    })
+    
+    $("#previous").click(function(){
+        data = {
+            'csrfmiddlewaretoken': getCookie('csrftoken'),
+            'cur_edit_row': $('#cur_edit_id').val(),
+            'selectedFile': $('#selectedFile').val(),
+        }
+        $.post('/previous', data, function(data){
+            if (data['process_alert_display']) {
+                $('#card-alert').removeClass('d-none').addClass('d-block')
+                $('#card-process').removeClass('d-block').addClass('d-none')
+                $('#process-alert').removeClass('d-none').addClass('d-block')
+                $('#process-alert').html('已经到达第一条！')
+            }
+            else {
+                $('#review_text').html(data.cur_edit_review)
+                $('#cur_edit_id').val(parseInt($('#cur_edit_id').val())-1)
+                $('.progress-bar').css({'width': data.already/data.total*100+"%", 'aria-valuenow': data.already})
+                $('.progress-bar').html(data.already+' / '+data.total)
+            }
+        })
+    })
+    $('#card-process button:not(button:first-child()):not(button:last-child())').each(function(index){
+        $(this).click(function(){
+            data = {
+                'csrfmiddlewaretoken': getCookie('csrftoken'),
+                'cur_edit_row': $('#cur_edit_id').val(),
+                'selectedFile': $('#selectedFile').val(),
+                'sentiValue': index-1
+            }
+            $.post('/nextSenti', data, function(data){
+                if (data['process_alert_display']) {
+                    $('#card-alert').removeClass('d-none').addClass('d-block')
+                    $('#card-process').removeClass('d-block').addClass('d-none')
+                    $('#process-alert').removeClass('d-none').addClass('d-block')
+                    $('#process-alert').html('已经到达最后一条！')
+                }
+                else {
+                    $('#review_text').html(data.cur_edit_review)
+                    $('#cur_edit_id').val(parseInt($('#cur_edit_id').val())+1)
+                    $('.progress-bar').css({'width': data.already/data.total*100+"%", 'aria-valuenow': data.already})
+                    $('.progress-bar').html(data.already+' / '+data.total)
+                }
+            })
+        })
+    })
+    
+    
+</script>
+{% endblock scripts %}
